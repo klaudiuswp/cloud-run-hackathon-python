@@ -52,6 +52,7 @@ def move():
     y = int(data['arena']['state'][myURL]['y'])
     dir = data['arena']['state'][myURL]['direction']
     washit = data['arena']['state'][myURL]['wasHit']
+    skor = data['arena']['state'][myURL]['score']
     pemain_lain = data['arena']['state']
     pemain_lain.pop(myURL)
 
@@ -93,17 +94,17 @@ def move():
         if (dir=='W' and int(pemain_lain[pemain]['x'])==(x-1) and int(pemain_lain[pemain]['y'])==y) or (dir=='E' and int(pemain_lain[pemain]['x'])==(x+1) and int(pemain_lain[pemain]['y'])==y) or (dir=='S' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y'])==(y-1)) or (dir=='N' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y'])==(y+1)):
             return moves[1]
 
-
-    if bool(data['arena']['state'][myURL]['wasHit']) == True:
+    if bool(washit) == True:
         return moves[0]
     
-    if int(data['arena']['state'][myURL]['score']) <= 0:
+    if int(skor) <= 0:
         return moves[1]
     # logger.info(data)
+
     return moves[random.randrange(len(moves))]
 
 if __name__ == "__main__":
-  app.run(debug=False,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))
+    app.run(debug=False,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))
   
 # {
 #   "_links": {
