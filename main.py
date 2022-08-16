@@ -72,14 +72,23 @@ def move():
             if x==int(dim[1])-1:
                 return moves[2]
             else:
-                return moves[random.choice([0,1,2])]
+                if bool(washit) == True:
+                    return moves[0]
+                else:
+                    return moves[random.choice([0,1,2])]
         elif dir=='W':
             if x==0:
                 return moves[3]
             else:
-                return moves[random.choice([0,1,3])]
+                if bool(washit) == True:
+                    return moves[0]
+                else:
+                    return moves[random.choice([0,1,3])]
         else:
-            return moves[random.randrange(len(moves))]
+            if bool(washit) == True:
+                return moves[0]
+            else:
+                return moves[random.randrange(len(moves))]
     elif y==0:
         if dir=='N':
             if x==0:
@@ -92,14 +101,23 @@ def move():
             if y==0:
                 return moves[2]
             else:
-                return moves[random.choice([0,1,2])]
+                if bool(washit) == True:
+                    return moves[0]
+                else:
+                    return moves[random.choice([0,1,2])]
         elif dir=='E':
             if y==int(dim[1])-1:
                 return moves[3]
             else:
-                return moves[random.choice([0,1,3])]
+                if bool(washit) == True:
+                    return moves[0]
+                else:
+                    return moves[random.choice([0,1,3])]
         else:
-            return moves[random.randrange(len(moves))]
+            if bool(washit) == True:
+                return moves[0]
+            else:
+                return moves[random.randrange(len(moves))]
 
     # W barat
     # E timur
