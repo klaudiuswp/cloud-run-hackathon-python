@@ -34,7 +34,7 @@ poin_sebelum = int()
 # L <- turn Left 2
 # T <- Throw 1
 
-def cek_penyerang(x,y,states):
+# def cek_penyerang(x,y,states):
 
 
 @app.route("/", methods=['GET'])
