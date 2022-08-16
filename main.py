@@ -36,7 +36,6 @@ myURL = 'https://cloud-run-hackathon-python-t6fxfduwiq-uc.a.run.app'
 
 # def cek_penyerang(x,y,states):
 
-
 @app.route("/", methods=['GET'])
 def index():
     return "Let the battle begin!"
@@ -91,7 +90,7 @@ def move():
     # N atas
 
     for pemain in pemain_lain:
-        if (dir=='W' and int(pemain_lain[pemain]['x'])==(x-1) and int(pemain_lain[pemain]['y'])==y) or (dir=='E' and int(pemain_lain[pemain]['x'])==(x+1) and int(pemain_lain[pemain]['y'])==y) or (dir=='S' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y'])==(y-1)) or (dir=='N' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y'])==(y+1)):
+        if (dir=='W' and int(pemain_lain[pemain]['x']) in range(x,x-4) and int(pemain_lain[pemain]['y'])==y) or (dir=='E' and int(pemain_lain[pemain]['x'])in range(x,x+4) and int(pemain_lain[pemain]['y'])==y) or (dir=='S' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y-4)) or (dir=='N' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y+4)):
             return moves[1]
 
     if bool(washit) == True:
@@ -101,7 +100,7 @@ def move():
         return moves[1]
     # logger.info(data)
 
-    return moves[random.randrange(len(moves))]
+    return moves[random.choice([0,2,3])]
 
 if __name__ == "__main__":
     app.run(debug=False,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))
