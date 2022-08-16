@@ -90,7 +90,7 @@ def move():
     # N atas
 
     for pemain in pemain_lain:
-        if (dir=='W' and int(pemain['x'])==(x-1) and int(pemain['y'])==y) or (dir=='E' and int(pemain['x'])==(x+1) and int(pemain['y'])==y) or (dir=='S' and int(pemain['x'])==x and int(pemain['y'])==(y-1)) or (dir=='N' and int(pemain['x'])==x and int(pemain['y'])==(y+1)):
+        if (dir=='W' and int(pemain_lain[pemain]['x'])==(x-1) and int(pemain_lain[pemain]['y'])==y) or (dir=='E' and int(pemain_lain[pemain]['x'])==(x+1) and int(pemain_lain[pemain]['y'])==y) or (dir=='S' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y'])==(y-1)) or (dir=='N' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y'])==(y+1)):
             return moves[1]
 
 
