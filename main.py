@@ -88,6 +88,9 @@ def move():
     # S selatan
     # N atas
 
+    for pemain in pemain_lain:
+        if (dir=='W' and pemain['x']==(x-1) and pemain['y']==y) or (dir=='E' and pemain['x']==(x+1) and pemain['y']==y) or (dir=='S' and pemain['x']==x and pemain['y']==(y-1)) or (dir=='N' and pemain['x']==x and pemain['y']==(y+1))
+
     if data['arena']['state'][myURL]['wasHit'] == True:
         return moves[0]
     if data['arena']['state'][myURL]['score'] <= 0:
