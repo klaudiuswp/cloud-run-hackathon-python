@@ -48,18 +48,18 @@ def move():
     data = request.json
 
     dim = data['arena']['dims']
-    x = data['arena']['state'][myURL]['x']
-    y = data['arena']['state'][myURL]['y']
+    x = int(data['arena']['state'][myURL]['x'])
+    y = int(data['arena']['state'][myURL]['y'])
     dir = data['arena']['state'][myURL]['direction']
     washit = data['arena']['state'][myURL]['wasHit']
     pemain_lain = data['arena']['state']
     pemain_lain.pop(myURL)
 
-    if x==dim[0]:
+    if x==int(dim[0]):
         if dir=='S':
             if y==0:
                 return moves[2]
-            elif y==dim[1]:
+            elif y==int(dim[1]):
                 return moves[3]
             else:
                 return moves[random.choice([2,3])]
@@ -73,7 +73,7 @@ def move():
         if dir=='N':
             if y==0:
                 return moves[3]
-            elif y==dim[1]:
+            elif y==int(dim[1]):
                 return moves[2]
             else:
                 return moves[random.choice([2,3])]
@@ -90,14 +90,14 @@ def move():
     # N atas
 
     for pemain in pemain_lain:
-        if (dir=='W' and pemain['x']==(x-1) and pemain['y']==y) or (dir=='E' and pemain['x']==(x+1) and pemain['y']==y) or (dir=='S' and pemain['x']==x and pemain['y']==(y-1)) or (dir=='N' and pemain['x']==x and pemain['y']==(y+1)):
+        if (dir=='W' and int(pemain['x'])==(x-1) and int(pemain['y'])==y) or (dir=='E' and int(pemain['x'])==(x+1) and int(pemain['y'])==y) or (dir=='S' and int(pemain['x'])==x and int(pemain['y'])==(y-1)) or (dir=='N' and int(pemain['x'])==x and int(pemain['y'])==(y+1)):
             return moves[1]
 
 
-    if data['arena']['state'][myURL]['wasHit'] == True:
+    if bool(data['arena']['state'][myURL]['wasHit']) == True:
         return moves[0]
     
-    if data['arena']['state'][myURL]['score'] <= 0:
+    if int(data['arena']['state'][myURL]['score']) <= 0:
         return moves[1]
     # logger.info(data)
     return moves[random.randrange(len(moves))]
