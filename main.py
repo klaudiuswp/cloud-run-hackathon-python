@@ -18,7 +18,7 @@ import logging
 import random
 from flask import Flask, request
 
-import json
+# import json
 
 logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 logger = logging.getLogger(__name__)
@@ -34,7 +34,7 @@ def index():
 def move():
     request.get_data()
     logger.info(request.json)
-    data = json.load(request.json)
+    data = request.json
     # logger.info(data)
     return moves[random.randrange(len(moves))]
 
