@@ -25,7 +25,7 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 moves = ['F', 'T', 'L', 'R']
-myURL = 'https://cloud-run-hackathon-python-t6fxfduwiq-uc.a.run.app'
+
 # poin_sebelum = int()
 # def bertambah()
 
@@ -46,6 +46,7 @@ def move():
     logger.info(request.json)
     data = request.json
 
+    myURL = data['_links']['self']['href']
     dim = data['arena']['dims']
     x = int(data['arena']['state'][myURL]['x'])
     y = int(data['arena']['state'][myURL]['y'])
@@ -55,32 +56,48 @@ def move():
     pemain_lain = data['arena']['state']
     pemain_lain.pop(myURL)
 
-    if x==int(dim[0])-1:
-        if dir=='N':
-            if y==0:
+    for pemain in pemain_lain:
+        if (dir=='E' and int(pemain_lain[pemain]['x']) in range(x,x-4) and int(pemain_lain[pemain]['y'])==y) or (dir=='W' and int(pemain_lain[pemain]['x'])in range(x,x+4) and int(pemain_lain[pemain]['y'])==y) or (dir=='N' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y-4)) or (dir=='S' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y+4)):
+            return moves[1]
+
+    if y==int(dim[0])-1:
+        if dir=='S':
+            if x==0:
                 return moves[2]
-            elif y==int(dim[1])-1:
+            elif x==int(dim[1])-1:
                 return moves[3]
             else:
                 return moves[random.choice([2,3])]
         elif dir=='E':
-            return moves[random.choice([0,1,2])]
+            if x==int(dim[1])-1:
+                return moves[2]
+            else:
+                return moves[random.choice([0,1,2])]
         elif dir=='W':
-            return moves[random.choice([0,1,3])]
+            if x==0:
+                return moves[3]
+            else:
+                return moves[random.choice([0,1,3])]
         else:
             return moves[random.randrange(len(moves))]
-    elif x==0:
-        if dir=='S':
-            if y==0:
+    elif y==0:
+        if dir=='N':
+            if x==0:
                 return moves[3]
             elif y==int(dim[1])-1:
                 return moves[2]
             else:
                 return moves[random.choice([2,3])]
         elif dir=='W':
-            return moves[random.choice([0,1,3])]
+            if y==0:
+                return moves[2]
+            else:
+                return moves[random.choice([0,1,2])]
         elif dir=='E':
-            return moves[random.choice([0,1,2])]
+            if y==int(dim[1])-1:
+                return moves[3]
+            else:
+                return moves[random.choice([0,1,3])]
         else:
             return moves[random.randrange(len(moves))]
 
@@ -88,10 +105,6 @@ def move():
     # E timur
     # S selatan
     # N atas
-
-    for pemain in pemain_lain:
-        if (dir=='E' and int(pemain_lain[pemain]['x']) in range(x,x-4) and int(pemain_lain[pemain]['y'])==y) or (dir=='W' and int(pemain_lain[pemain]['x'])in range(x,x+4) and int(pemain_lain[pemain]['y'])==y) or (dir=='N' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y-4)) or (dir=='S' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y+4)):
-            return moves[1]
 
     if bool(washit) == True:
         return moves[0]
