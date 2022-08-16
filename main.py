@@ -56,7 +56,7 @@ def move():
     pemain_lain.pop(myURL)
 
     if x==int(dim[0]):
-        if dir=='S':
+        if dir=='N':
             if y==0:
                 return moves[2]
             elif y==int(dim[1]):
@@ -70,16 +70,16 @@ def move():
         else:
             return moves[random.randrange(len(moves))]
     elif x==0:
-        if dir=='N':
+        if dir=='S':
             if y==0:
                 return moves[3]
             elif y==int(dim[1]):
                 return moves[2]
             else:
                 return moves[random.choice([2,3])]
-        elif dir=='E':
-            return moves[random.choice([0,1,3])]
         elif dir=='W':
+            return moves[random.choice([0,1,3])]
+        elif dir=='E':
             return moves[random.choice([0,1,2])]
         else:
             return moves[random.randrange(len(moves))]
@@ -90,7 +90,7 @@ def move():
     # N atas
 
     for pemain in pemain_lain:
-        if (dir=='W' and int(pemain_lain[pemain]['x']) in range(x,x-4) and int(pemain_lain[pemain]['y'])==y) or (dir=='E' and int(pemain_lain[pemain]['x'])in range(x,x+4) and int(pemain_lain[pemain]['y'])==y) or (dir=='S' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y-4)) or (dir=='N' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y+4)):
+        if (dir=='E' and int(pemain_lain[pemain]['x']) in range(x,x-4) and int(pemain_lain[pemain]['y'])==y) or (dir=='W' and int(pemain_lain[pemain]['x'])in range(x,x+4) and int(pemain_lain[pemain]['y'])==y) or (dir=='N' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y-4)) or (dir=='S' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y+4)):
             return moves[1]
 
     if bool(washit) == True:
