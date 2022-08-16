@@ -34,6 +34,9 @@ poin_sebelum = int()
 # L <- turn Left 2
 # T <- Throw 1
 
+def cek_penyerang(x,y,states):
+
+
 @app.route("/", methods=['GET'])
 def index():
     return "Let the battle begin!"
@@ -43,6 +46,48 @@ def move():
     request.get_data()
     logger.info(request.json)
     data = request.json
+
+    dim = data['arena']['dims']
+    x = data['arena']['state'][myURL]['x']
+    y = data['arena']['state'][myURL]['y']
+    dir = data['arena']['state'][myURL]['direction']
+    washit = data['arena']['state'][myURL]['wasHit']
+    pemain_lain = data['arena']['state'].pop(myURL)
+
+    if x==dim[0]:
+        if dir=='S':
+            if y==0:
+                return moves[2]
+            elif y==dim[1]:
+                return moves[3]
+            else:
+                return moves[random.choice([2,3])]
+        elif dir=='E':
+            return moves[random.choice([0,1,2])]
+        elif dir=='W':
+            return moves[random.choice([0,1,3])]
+        else:
+            return moves[random.randrange(len(moves))]
+    elif x==0:
+        if dir=='N':
+            if y==0:
+                return moves[3]
+            elif y==dim[1]:
+                return moves[2]
+            else:
+                return moves[random.choice([2,3])]
+        elif dir=='E':
+            return moves[random.choice([0,1,3])]
+        elif dir=='W':
+            return moves[random.choice([0,1,2])]
+        else:
+            return moves[random.randrange(len(moves))]
+
+    # W barat
+    # E timur
+    # S selatan
+    # N atas
+
     if data['arena']['state'][myURL]['wasHit'] == True:
         return moves[0]
     if data['arena']['state'][myURL]['score'] <= 0:
