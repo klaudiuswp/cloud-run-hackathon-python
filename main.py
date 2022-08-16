@@ -25,6 +25,14 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 moves = ['F', 'T', 'L', 'R']
+myURL = 'https://cloud-run-hackathon-python-t6fxfduwiq-uc.a.run.app'
+poin_sebelum = int()
+# def bertambah()
+
+# F <- move Forward 0
+# R <- turn Right 3
+# L <- turn Left 2
+# T <- Throw 1
 
 @app.route("/", methods=['GET'])
 def index():
@@ -35,6 +43,10 @@ def move():
     request.get_data()
     logger.info(request.json)
     data = request.json
+    if data['arena']['state'][myURL]['wasHit'] == True:
+        return moves[0]
+    if data['arena']['state'][myURL]['score'] <= 0:
+        return moves[1]
     # logger.info(data)
     return moves[random.randrange(len(moves))]
 
