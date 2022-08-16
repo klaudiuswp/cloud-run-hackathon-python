@@ -26,7 +26,7 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 moves = ['F', 'T', 'L', 'R']
 myURL = 'https://cloud-run-hackathon-python-t6fxfduwiq-uc.a.run.app'
-poin_sebelum = int()
+# poin_sebelum = int()
 # def bertambah()
 
 # F <- move Forward 0
