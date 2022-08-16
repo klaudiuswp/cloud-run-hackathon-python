@@ -55,11 +55,11 @@ def move():
     pemain_lain = data['arena']['state']
     pemain_lain.pop(myURL)
 
-    if x==int(dim[0]):
+    if x==int(dim[0])-1:
         if dir=='N':
             if y==0:
                 return moves[2]
-            elif y==int(dim[1]):
+            elif y==int(dim[1])-1:
                 return moves[3]
             else:
                 return moves[random.choice([2,3])]
@@ -73,7 +73,7 @@ def move():
         if dir=='S':
             if y==0:
                 return moves[3]
-            elif y==int(dim[1]):
+            elif y==int(dim[1])-1:
                 return moves[2]
             else:
                 return moves[random.choice([2,3])]
