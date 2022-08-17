@@ -59,10 +59,8 @@ def cek_penyerang(washit,dim,dir,x,y,pemain_lain):
                     return moves[random.choice([2,3])]
                 # if (dir=='W' and int(pemain_lain[pemain]['x']) in range(x,x-4) and int(pemain_lain[pemain]['y'])==y) or (dir=='E' and int(pemain_lain[pemain]['x'])in range(x,x+4) and int(pemain_lain[pemain]['y'])==y) or (dir=='N' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y-4)) or (dir=='S' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y+4)):
 
-def serang(pemain_lain,dir,x,y):
-    for pemain in pemain_lain:
-        if (dir=='W' and int(pemain_lain[pemain]['x']) in range(x,x-4) and int(pemain_lain[pemain]['y'])==y) or (dir=='E' and int(pemain_lain[pemain]['x'])in range(x,x+4) and int(pemain_lain[pemain]['y'])==y) or (dir=='N' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y-4)) or (dir=='S' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y+4)):
-            return moves[1]
+# def serang(pemain_lain,dir,x,y):
+    
 
 @app.route("/", methods=['GET'])
 def index():
@@ -92,7 +90,9 @@ def move():
             elif x==int(dim[1])-1:
                 return moves[3]
             else:
-                serang(pemain_lain,dir,x,y)
+                for pemain in pemain_lain:
+                    if (dir=='W' and int(pemain_lain[pemain]['x']) in range(x,x-4) and int(pemain_lain[pemain]['y'])==y) or (dir=='E' and int(pemain_lain[pemain]['x'])in range(x,x+4) and int(pemain_lain[pemain]['y'])==y) or (dir=='N' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y-4)) or (dir=='S' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y+4)):
+                        return moves[1]
                 return moves[random.choice([2,3])]
         elif dir=='E':
             if x==int(dim[1])-1:
@@ -101,7 +101,9 @@ def move():
                 if bool(washit) == True:
                     cek_penyerang(washit,dim,dir,x,y,pemain_lain)
                 else:
-                    serang(pemain_lain,dir,x,y)
+                    for pemain in pemain_lain:
+                        if (dir=='W' and int(pemain_lain[pemain]['x']) in range(x,x-4) and int(pemain_lain[pemain]['y'])==y) or (dir=='E' and int(pemain_lain[pemain]['x'])in range(x,x+4) and int(pemain_lain[pemain]['y'])==y) or (dir=='N' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y-4)) or (dir=='S' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y+4)):
+                            return moves[1]
                     return moves[random.choice([0,1,2])]
         elif dir=='W':
             if x==0:
@@ -110,13 +112,17 @@ def move():
                 if bool(washit) == True:
                     cek_penyerang(washit,dim,dir,x,y,pemain_lain)
                 else:
-                    serang(pemain_lain,dir,x,y)
+                    for pemain in pemain_lain:
+                        if (dir=='W' and int(pemain_lain[pemain]['x']) in range(x,x-4) and int(pemain_lain[pemain]['y'])==y) or (dir=='E' and int(pemain_lain[pemain]['x'])in range(x,x+4) and int(pemain_lain[pemain]['y'])==y) or (dir=='N' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y-4)) or (dir=='S' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y+4)):
+                            return moves[1]
                     return moves[random.choice([0,1,3])]
         else:
             if bool(washit) == True:
                 return moves[0]
             else:
-                serang(pemain_lain,dir,x,y)
+                for pemain in pemain_lain:
+                    if (dir=='W' and int(pemain_lain[pemain]['x']) in range(x,x-4) and int(pemain_lain[pemain]['y'])==y) or (dir=='E' and int(pemain_lain[pemain]['x'])in range(x,x+4) and int(pemain_lain[pemain]['y'])==y) or (dir=='N' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y-4)) or (dir=='S' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y+4)):
+                        return moves[1]
                 return moves[random.randrange(len(moves))]
     elif y==0:
         if dir=='N':
@@ -125,7 +131,9 @@ def move():
             elif x==int(dim[1])-1:
                 return moves[2]
             else:
-                serang(pemain_lain,dir,x,y)
+                for pemain in pemain_lain:
+                    if (dir=='W' and int(pemain_lain[pemain]['x']) in range(x,x-4) and int(pemain_lain[pemain]['y'])==y) or (dir=='E' and int(pemain_lain[pemain]['x'])in range(x,x+4) and int(pemain_lain[pemain]['y'])==y) or (dir=='N' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y-4)) or (dir=='S' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y+4)):
+                        return moves[1]
                 return moves[random.choice([2,3])]
         elif dir=='W':
             if x==0:
@@ -143,13 +151,17 @@ def move():
                 if bool(washit) == True:
                     cek_penyerang(washit,dim,dir,x,y,pemain_lain)
                 else:
-                    serang(pemain_lain,dir,x,y)
+                    for pemain in pemain_lain:
+                        if (dir=='W' and int(pemain_lain[pemain]['x']) in range(x,x-4) and int(pemain_lain[pemain]['y'])==y) or (dir=='E' and int(pemain_lain[pemain]['x'])in range(x,x+4) and int(pemain_lain[pemain]['y'])==y) or (dir=='N' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y-4)) or (dir=='S' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y+4)):
+                            return moves[1]
                     return moves[random.choice([0,1,3])]
         else:
             if bool(washit) == True:
                 cek_penyerang(washit,dim,dir,x,y,pemain_lain)
             else:
-                serang(pemain_lain,dir,x,y)
+                for pemain in pemain_lain:
+                    if (dir=='W' and int(pemain_lain[pemain]['x']) in range(x,x-4) and int(pemain_lain[pemain]['y'])==y) or (dir=='E' and int(pemain_lain[pemain]['x'])in range(x,x+4) and int(pemain_lain[pemain]['y'])==y) or (dir=='N' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y-4)) or (dir=='S' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y+4)):
+                        return moves[1]
                 return moves[random.randrange(len(moves))]
     elif x==int(dim[1])-1:
         if dir=='E':
@@ -158,7 +170,9 @@ def move():
         if dir=='W':
             return moves[random.choice([3,2])]
     else:
-        serang(pemain_lain,dir,x,y)
+        for pemain in pemain_lain:
+            if (dir=='W' and int(pemain_lain[pemain]['x']) in range(x,x-4) and int(pemain_lain[pemain]['y'])==y) or (dir=='E' and int(pemain_lain[pemain]['x'])in range(x,x+4) and int(pemain_lain[pemain]['y'])==y) or (dir=='N' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y-4)) or (dir=='S' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y+4)):
+                return moves[1]
         return moves[random.randrange(len(moves))]
 
     # W barat
