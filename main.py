@@ -57,6 +57,8 @@ def cek_penyerang(washit,dim,dir,x,y,pemain_lain):
                     return moves[3]
                 else :
                     return moves[random.choice([2,3])]
+            else:
+                return moves['F']
                 # if (dir=='W' and int(pemain_lain[pemain]['x']) in range(x,x-4) and int(pemain_lain[pemain]['y'])==y) or (dir=='E' and int(pemain_lain[pemain]['x'])in range(x,x+4) and int(pemain_lain[pemain]['y'])==y) or (dir=='N' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y-4)) or (dir=='S' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y+4)):
 
 # def serang(pemain_lain,dir,x,y):
