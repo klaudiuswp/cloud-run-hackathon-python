@@ -16,7 +16,6 @@
 import os
 import logging
 import random
-# from tkinter import N
 from flask import Flask, request
 
 # import json
