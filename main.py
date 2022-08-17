@@ -57,7 +57,7 @@ def move():
     pemain_lain.pop(myURL)
 
     for pemain in pemain_lain:
-        if (dir=='E' and int(pemain_lain[pemain]['x']) in range(x,x-4) and int(pemain_lain[pemain]['y'])==y) or (dir=='W' and int(pemain_lain[pemain]['x'])in range(x,x+4) and int(pemain_lain[pemain]['y'])==y) or (dir=='N' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y-4)) or (dir=='S' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y+4)):
+        if (dir=='W' and int(pemain_lain[pemain]['x']) in range(x,x-4) and int(pemain_lain[pemain]['y'])==y) or (dir=='E' and int(pemain_lain[pemain]['x'])in range(x,x+4) and int(pemain_lain[pemain]['y'])==y) or (dir=='N' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y-4)) or (dir=='S' and int(pemain_lain[pemain]['x'])==x and int(pemain_lain[pemain]['y']) in range(y,y+4)):
             return moves[1]
 
     if y==int(dim[0])-1:
